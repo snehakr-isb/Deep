@@ -1,0 +1,382 @@
+/* Using a modern CSS reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- CSS Variables --- */
+:root {
+    /* Fonts */
+    --font-family-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-family-main: 'Poppins', sans-serif;
+
+    /* Light Theme Colors (Brand Palette) */
+    --color-background: #FFF7E3; /* Background Off-White */
+    --color-text: #090435;       /* Primary Dark Blue */
+    --color-primary: #DB007D;    /* Primary Pink */
+    --color-secondary: #FFCE13;  /* Secondary Yellow */
+    --color-primary-hover: #b80069; /* Darker Pink */
+    --color-surface: #FFFFFF;
+    --color-border: #e8e3d3;       /* Softer border for light mode */
+    --color-header-bg: rgba(255, 247, 227, 0.8); /* Off-white with transparency */
+}
+
+body.dark {
+    /* Dark Theme Colors */
+    --color-background: #090435; /* Primary Dark Blue */
+    --color-text: #FFF7E3;       /* Background Off-White */
+    --color-primary: #DB007D;    /* Primary Pink */
+    --color-secondary: #FFCE13;  /* Secondary Yellow */
+    --color-primary-hover: #ff33a1; /* Lighter Pink */
+    --color-surface: #1a1f4a;     /* Slightly lighter blue */
+    --color-border: #2c326b;       /* Softer border for dark mode */
+    --color-header-bg: rgba(9, 4, 53, 0.8); /* Dark blue with transparency */
+}
+
+/* --- General Styles --- */
+body {
+    font-family: var(--font-family-main);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-family-heading);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 3rem; text-transform: uppercase; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- Header & Navigation --- */
+.main-header {
+    background-color: var(--color-header-bg);
+    border-bottom: 2px solid var(--color-border);
+    padding: 0.75rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-family-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-text);
+}
+
+.logo-icon {
+    height: 40px;
+    width: 40px;
+}
+
+.logo:hover {
+    opacity: 0.9;
+    text-decoration: none;
+}
+
+/* --- Theme Toggle Button --- */
+.theme-toggle-button {
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    position: relative;
+    width: 54px;
+    height: 30px;
+}
+
+.theme-toggle-button svg {
+    color: var(--color-secondary);
+    height: 20px;
+    width: 20px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle-button .moon {
+    opacity: 0;
+    transform: translateX(-24px);
+}
+.theme-toggle-button .sun {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+body.dark .theme-toggle-button .moon {
+    opacity: 1;
+    transform: translateX(0);
+}
+body.dark .theme-toggle-button .sun {
+    opacity: 0;
+    transform: translateX(24px);
+}
+
+/* --- SPACING FIX: Consistent Vertical Rhythm --- */
+main > section {
+    padding: 2.5rem 0;
+}
+.hero {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+
+/* --- SQUIGGLY LINES BACKGROUND --- */
+.hero-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    min-width: 800px;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    opacity: 0.7;
+}
+
+body.dark .hero-background {
+    opacity: 0.4;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- SQUIGGLY LINES ANIMATION --- */
+@keyframes squiggle1 {
+    0%, 100% { transform: translate(0, 0) rotate(0); }
+    50% { transform: translate(-8px, 6px) rotate(-1deg); }
+}
+
+@keyframes squiggle2 {
+    0%, 100% { transform: translate(0, 0) rotate(0); }
+    50% { transform: translate(8px, -6px) rotate(1deg); }
+}
+
+@keyframes squiggle3 {
+    0%, 100% { transform: translate(0, 0) rotate(0); }
+    50% { transform: translate(-4px, -8px) rotate(0.8deg); }
+}
+
+@keyframes squiggle4 {
+    0%, 100% { transform: translate(0, 0) rotate(0); }
+    50% { transform: translate(6px, 8px) rotate(-0.5deg); }
+}
+
+@keyframes squiggle5 {
+    0%, 100% { transform: translate(0, 0) rotate(0); }
+    50% { transform: translate(-8px, -4px) rotate(0.5deg); }
+}
+
+.squiggle-path-1 {
+    animation: squiggle1 2.8s ease-in-out infinite;
+}
+
+.squiggle-path-2 {
+    animation: squiggle2 3.2s ease-in-out infinite;
+}
+
+.squiggle-path-3 {
+    animation: squiggle3 2.6s ease-in-out infinite;
+}
+
+.squiggle-path-4 {
+    animation: squiggle4 3.1s ease-in-out infinite;
+}
+
+.squiggle-path-5 {
+    animation: squiggle5 2.9s ease-in-out infinite;
+}
+
+
+/* --- Songs Grid --- */
+.songs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(2, minmax(350px, 1fr)); /*Force 2 columns */
+    gap: 1.5rem; /* SPACING FIX: Tighter gap */
+    
+}
+
+.song-card, #user-goal {
+    background-color: var(--color-surface);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.song-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+body.dark .song-card, body.dark #user-goal {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+body.dark .song-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- About Section --- */
+.about-section {
+    text-align: center;
+}
+
+.about-section .container {
+    max-width: 800px;
+}
+.about-section h2 {
+    margin-top: 2rem;
+}
+.about-section h2:first-of-type {
+    margin-top: 0;
+}
+
+.about-section p {
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#user-goal {
+    min-height: 60px;
+    width: 100%;
+    margin: 0 auto 2rem auto;
+    max-width: 700px;
+    text-align: left;
+    cursor: text;
+    line-height: 1.5;
+    font-size: 1rem;
+    position: relative; 
+}
+
+#user-goal:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+#user-goal:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text);
+    opacity: 0.5;
+    pointer-events: none;
+    display: block;
+}
+
+#user-goal::after {
+    content: '✎'; /* Edit icon */
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    color: var(--color-text);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none; /* Make icon non-interactive */
+}
+
+#user-goal:hover::after {
+    opacity: 0.5;
+}
+
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 3rem 0; /* SPACING FIX: Consistent padding */
+    margin-top: 3rem; /* SPACING FIX: Consistent margin */
+    border-top: 2px solid var(--color-border);
+}
+
+/* --- Utility Class --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    .songs-grid {
+      grid-template-columns: 1fr;
+    }
+   }
+    .hero {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+    }
+    main > section {
+        padding: 2rem 0;
+    }
+}
+
