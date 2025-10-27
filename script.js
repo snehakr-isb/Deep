@@ -11,6 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('dark');
         }
     };
+// Auth UI
+    function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId());
+  console.log('Name: ' + profile.getName());
+  console.log('Email: ' + profile.getEmail());
+}
+
 
     // Apply saved theme on initial load
     const savedTheme = localStorage.getItem('theme') || 'light';
