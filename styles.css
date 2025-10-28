@@ -103,9 +103,12 @@ a:hover {
     color: var(--color-text);
 }
 
-.logo-icon {
-    height: 40px;
-    width: 40px;
+.logo-image {
+    /* Sets the desired visual size for your new logo */
+    height: 40px;       /* Keep the original height for visual consistency */
+    width: auto;        /* Ensures the image scales proportionally */
+    max-width: 40px;    /* Prevents the image from becoming too wide */
+    /* Optional: If you see issues with the image alignment, add 'display: block;' */
 }
 
 .logo:hover {
