@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+   <meta name="google-signin-client_id" content="335244950482-gdovqt6oqke8etuf16un84g2lc15dp7q.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <title>Deep - Focus Music</title>
+    
+<button onclick="signOut()" class="signout-button" style="display: none;">Sign Out</button>
+<title>Deep - Focus Music</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,17 +22,9 @@
     <header id="main-header" class="main-header">
         <nav class="container">
             <a href="#" class="logo">
-                <!-- LOGO FIX: New, accurate SVG -->
-                <svg class="logo-icon" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-                    <g stroke="#090435" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
-                        <path fill="#DB007D" d="M193.3 121.8c0-36.4-18.2-77.3-57.3-77.3 -39.1 0-57.3 40.9-57.3 77.3 0 36.4 18.2 59.1 57.3 59.1s57.3-22.7 57.3-59.1z"/>
-                        <path fill="#DB007D" d="M109.1 40.9c0-18.2 3.6-32.7 18.2-32.7s18.2 14.5 18.2 32.7"/>
-                        <path fill="none" d="m98.2 132.7 14.5 14.6m0-14.6-14.5 14.6m36.4-7.3h14.5"/>
-                        <path fill="none" stroke="#FFCE13" d="m193.3 109.1c3.7-3.6 7.3-9.1 7.3-18.2s-3.6-14.5-7.3-18.2m7.2 43.6c5.5-5.5 10.9-14.5 10.9-25.4s-5.4-20-10.9-25.5"/>
-                    </g>
-                </svg>
-                <span>deep</span>
-            </a>
+    <img src="images/Deep log.png" alt="Deep Music Logo" class="logo-image">
+    <span>deep</span>
+</a>
             <button id="theme-toggle" class="theme-toggle-button" aria-label="Toggle theme">
                 <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                 <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -72,7 +66,7 @@
             <div class="song-card">
                 <h3>No bullshit FOCUS 2</h3>
                  <div class="video-container">
-                    <iframe src="https://youtube.com/embed/yLOM8R6lbzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/yLOM8R6lbzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <!-- Song 3 -->
