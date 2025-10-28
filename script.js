@@ -3,6 +3,54 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Theme Management ---
     const themeToggleButton = document.getElementById('theme-toggle');
     
+    // Google Sign-In Implementation
+    function onSignIn(googleUser) {
+        const profile = googleUser.getBasicProfile();
+        
+        // Store user info
+        const userData = {
+            id: profile.getId(),
+            name: profile.getName(),
+            email: profile.getEmail(),
+            imageUrl: profile.getImageUrl()
+        };
+
+        // Save to localStorage (optional)
+        localStorage.setItem('userProfile', JSON.stringify(userData));
+
+        // Update UI to show logged-in state
+        updateUIForSignedInUser(userData);
+    }
+
+    // Helper function to update UI
+    function updateUIForSignedInUser(userData) {
+        // Add this HTML to your index.html where you want to show user info
+        const userInfoDiv = document.createElement('div');
+        userInfoDiv.classList.add('user-info');
+        userInfoDiv.innerHTML = `
+            <img src="${userData.imageUrl}" alt="Profile picture">
+            <p>Welcome, ${userData.name}!</p>
+        `;
+
+        // Insert the user info div after the sign-in button
+        const signInButton = document.querySelector('.g-signin2');
+        signInButton.style.display = 'none';
+        signInButton.parentNode.insertBefore(userInfoDiv, signInButton.nextSibling);
+    }
+
+    // Add sign out functionality
+    function signOut() {
+        const auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(() => {
+            localStorage.removeItem('userProfile');
+            location.reload();
+        });
+    }
+
+    // Make onSignIn global so Google API can access it
+    window.onSignIn = onSignIn;
+    window.signOut = signOut;
+
     // Function to apply theme
     const applyTheme = (theme) => {
         if (theme === 'dark') {
@@ -11,14 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('dark');
         }
     };
-// Auth UI
-    function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId());
-  console.log('Name: ' + profile.getName());
-  console.log('Email: ' + profile.getEmail());
-}
-
 
     // Apply saved theme on initial load
     const savedTheme = localStorage.getItem('theme') || 'light';
